@@ -78,12 +78,14 @@ function remainingBalance() {
     const restBalance = balance() - percentageAmount();
     remainingBalance.innerText = restBalance;
 }
-// add event handler to button
+
+// add event handler to calculate button
 document.getElementById('calculate-button').addEventListener('click', function() {
     totalExpense(); //call the totalExpense function
     balance(); //call the balance function
 })
 
+// add event handler to save button
 document.getElementById('save').addEventListener('click', function() {
     percentageAmount(); //call the percentageAmount function
     remainingBalance(); //call the remaining balance function
