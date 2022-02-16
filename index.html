@@ -13,17 +13,21 @@
 </head>
 
 <body>
+    <!-- header section -->
     <header>
-        <h1 class="text-primary text-center mt-2 mb-5">Balance Calculator</h1>
+        <h1 class="text-center mb-3 custom-color">Money Calculator</h1>
     </header>
+    <!-- main section -->
     <main>
         <div class="container">
-            <div class="row">
-                <div class="col col-8">
-                    <img src="images/calculator.jpg" alt="" height="615px" width="100%">
+            <div class="row gx-5">
+                <!-- image section -->
+                <div class="col col-12 col-lg-8">
+                    <img src="images/calculator.jpg" alt="" height="580px" width="100%">
                 </div>
-                <div class="col col-4">
-                    <div class="text-center">
+                <!-- calculator section -->
+                <div class="col col-12 col-lg-4 mt-5 mt-lg-0 background-color">
+                    <div class="text-center pt-2">
                         <h3>Income</h3>
                         <div class="row">
                             <div class="col-4 d-flex justify-content-end">
@@ -58,24 +62,21 @@
                                 <h6 class="mb-4"><span><input type="text" id="cloth"></span> </h6>
                             </div>
                         </div>
-                        <p id="alert"></p>
-                        <button id="calculate-button" type="button" class="btn btn-primary btn-lg mb-4">Calculate</button>
+                        <p id="alert" class="text-danger fs-5"></p>
+                        <button id="calculate-button" type="button" class="button-style btn-lg mb-4">Calculate</button>
                         <h4>Total Expenses: <span id="total-expense"></span></h4>
                         <h4 class="mb-4">Balance: <span id="balance"></span></h4>
-
-
-                        <p class="mb-4">Save: <input id="save-percentage" type="text">% <span><button id = "save" type="button" class="btn btn-primary btn">Save </button></span></p>
-                        <p id="second-alert"></p>
+                        <h6 class="mb-4 ">Save: <input id="save-percentage" type="text"><span class="fs-5 ms-1">% </span><span><button id = "save" type="button" class="button-style btn-sm">Save </button></span></h6>
+                        <p id="second-alert" class="text-danger fs-5"></p>
                         <h4>Saving Amount: <span id="save-amount"></span> </h4>
                         <h4>Remaining Balance: <span id="rest-balance"></span> </h4>
-
-
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
+    <!-- external javascript -->
     <script src="js/app.js"></script>
 </body>
 

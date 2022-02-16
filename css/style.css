@@ -1,0 +1,32 @@
+/* import google font  */
+
+@import url('https://fonts.googleapis.com/css2?family=Luxurious+Roman&family=Merriweather&family=Playfair+Display&family=Poppins:wght@500;700&family=Roboto&family=Roboto+Condensed&family=Roboto+Slab:wght@100&family=Source+Sans+Pro&display=swap');
+
+/* utilities */
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+/* header style */
+
+.custom-color {
+    color: palevioletred;
+}
+
+
+/* background color style for calculator section */
+
+.background-color {
+    background-color: rgba(120, 245, 203, 0.137);
+}
+
+
+/* button styles */
+
+.button-style {
+    background-color: palevioletred;
+    border: 0;
+    color: white;
+}
