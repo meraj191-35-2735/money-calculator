@@ -1,3 +1,4 @@
+// function for making input field blanked
 function makeUserInputBlanked(inputAmount) {
     const inputText = document.getElementById(inputAmount);
     inputText.value = '';
@@ -22,20 +23,25 @@ function totalExpense() {
             const expenses = document.getElementById('total-expense');
             const totalExpense = food + rent + cloth;
             // error handler for expenses greater than salary
-            if (totalExpense <= salary) {
+            if (totalExpense < salary) {
                 expenses.innerText = totalExpense;
             } else {
                 document.getElementById('alert').innerText = 'Insufficient Balance!';
+                document.getElementById('balance').innerText = '';
+                document.getElementById('total-expense').innerText = '';
             }
             return totalExpense;
         } else {
-            document.getElementById('alert').innerText = "Invalid Input!";
+            document.getElementById('alert').innerText = "Input must be a positive number!";
+            document.getElementById('balance').innerText = '';
+            document.getElementById('total-expense').innerText = '';
         }
     } else {
-        document.getElementById('alert').innerText = "Invalid Input!";
+        document.getElementById('alert').innerText = "Input must be a positive number!";
+        document.getElementById('balance').innerText = '';
+        document.getElementById('total-expense').innerText = '';
     }
 }
-
 // function for Balance
 function balance() {
     const salary = userInput('salary'); //call userInput function salary input field
@@ -46,16 +52,27 @@ function balance() {
             document.getElementById('alert').innerText = '';
             const balance = document.getElementById('balance');
             const restMoney = salary - totalExpense();
-            balance.innerText = restMoney;
-            return restMoney;
+            if (totalExpense() > salary) {
+                document.getElementById('balance').innerText = '';
+            } else {
+                balance.innerText = restMoney;
+                return restMoney;
+            }
         } else {
-            document.getElementById('alert').innerText = "Invalid Input!";
+            document.getElementById('alert').innerText = "Input must be a positive number!";
+            makeUserInputBlanked('food'); //call the makeUserInputBlanked function for food input field blank
+            makeUserInputBlanked('rent'); //call the makeUserInputBlanked function for rent input field blank
+            makeUserInputBlanked('cloth'); //call the makeUserInputBlanked function for cloth input field blank
+            makeUserInputBlanked('salary'); //call the makeUserInputBlanked function for salary input field blank
         }
     } else {
-        document.getElementById('alert').innerText = "Invalid Input!";
+        document.getElementById('alert').innerText = "Input must be a positive number!";
+        makeUserInputBlanked('food'); //call the makeUserInputBlanked function for food input field blank
+        makeUserInputBlanked('rent'); //call the makeUserInputBlanked function for rent input field blank
+        makeUserInputBlanked('cloth'); //call the makeUserInputBlanked function for cloth input field blank
+        makeUserInputBlanked('salary'); //call the makeUserInputBlanked function for salary input field blank
     }
 }
-
 // function for identify saving amount of salary
 function percentageAmount() {
     const savePercentage = userInput('save-percentage'); //call userInput function saving percentage input field
@@ -68,7 +85,7 @@ function percentageAmount() {
         const saveAmountText = document.getElementById('save-amount');
         // error handler for if saving amount greater than balance
         if (saveAmount <= balance()) {
-            saveAmountText.innerText = saveAmount;
+            saveAmountText.innerText = saveAmount.toFixed(2);
             return saveAmount;
         } else {
             saveAmountText.innerText = '';
@@ -76,16 +93,15 @@ function percentageAmount() {
         }
         return saveAmount;
     } else {
-        document.getElementById('second-alert').innerText = "Invalid Input!";
+        document.getElementById('second-alert').innerText = "Input must be a positive number!";
     }
 }
-
 // function for Remaining Balance
 function remainingBalance() {
     const remainingBalance = document.getElementById('rest-balance');
     if (percentageAmount() <= balance()) {
         const restBalance = balance() - percentageAmount();
-        remainingBalance.innerText = restBalance;
+        remainingBalance.innerText = restBalance.toFixed(2);
     } else {
         remainingBalance.innerText = '';
     }
@@ -93,17 +109,16 @@ function remainingBalance() {
 
 // add event handler to calculate button
 document.getElementById('calculate-button').addEventListener('click', function() {
-    totalExpense(); //call the totalExpense function
-    balance(); //call the balance function
-})
-
-// add event handler to save button
+        totalExpense(); //call the totalExpense function
+        balance(); //call the balance function
+    })
+    // add event handler to save button
 document.getElementById('save').addEventListener('click', function() {
     percentageAmount(); //call the percentageAmount function
     remainingBalance(); //call the remaining balance function
-    makeUserInputBlanked('food');
-    makeUserInputBlanked('rent');
-    makeUserInputBlanked('cloth');
-    makeUserInputBlanked('salary');
-    makeUserInputBlanked('save-percentage');
+    makeUserInputBlanked('food'); //call the makeUserInputBlanked function for food input field blank
+    makeUserInputBlanked('rent'); //call the makeUserInputBlanked function for rent input field blank
+    makeUserInputBlanked('cloth'); //call the makeUserInputBlanked function for cloth input field blank
+    makeUserInputBlanked('salary'); //call the makeUserInputBlanked function for salary input field blank
+    makeUserInputBlanked('save-percentage'); //call the makeUserInputBlanked function for saving percentage input field blank
 })
